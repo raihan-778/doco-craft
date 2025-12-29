@@ -1,5 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
+import { Html } from "next/document";
+import { remark } from "remark";
 // import path from 'path';
 // import matter from 'gray-matter';
 // import html from 'remark-html';
@@ -36,6 +38,16 @@ const getDocuments = () => {
 
 export const getDocumentContent = async (id) => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const matterResult = matter(fileContents);
+  const processedContent = await remark()
+    .use(Html)
+    .process(matterResult.content);
+  const contentHtml = processedContent.toString();
+
+  console.log("matter result", matterResult.data, "contentHtml", contentHtml);
+
+  return { id, contentHtml, ...matterResult.data };
 };
 
 export { getDocuments };
