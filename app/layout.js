@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.style} antialiased`}>
         <div className="h-full lg:ml-72 xl:ml-80">
           <Header docs={allDocuments} />
 
