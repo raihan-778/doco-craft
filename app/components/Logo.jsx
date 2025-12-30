@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Logo = () => {
   return (
-    <div className="hidden lg:flex">
+    <div className="lg:flex">
       <Link aria-label="Home" href="/">
         <Image
           src="./logo.svg"

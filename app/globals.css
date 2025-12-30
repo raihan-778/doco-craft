@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@plugin "@tailwindcss/aspect-ratio";
+/* @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio"; */
 
 /* ------------------------------
    THEME CONFIG (Tailwind v4)
@@ -51,6 +51,8 @@
   --opacity-2-5: 0.025;
   --opacity-7-5: 0.075;
   --opacity-15: 0.15;
+  --bg-opacity-light: 0.5;
+  --bg-opacity-dark: 0.2;
 
   /* Background images */
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
