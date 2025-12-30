@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <div class="h-full lg:ml-72 xl:ml-80">{children}</div>
+        <div className="h-full lg:ml-72 xl:ml-80">{children}</div>
       </body>
     </html>
   );
