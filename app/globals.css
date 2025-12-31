@@ -1,7 +1,9 @@
 /* -------------------------------------------------
    Tailwind CSS v4 Entry
 -------------------------------------------------- */
+
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Optional plugins (uncomment only if installed) */
 
@@ -13,6 +15,8 @@
      Colors
   ------------------------------ */
   --color-white: #ffffff;
+  --color-prose-body: #3f3f46;
+  --color-prose-headings: #18181b;
 
   --color-zinc-50: #fafafa;
   --color-zinc-100: #f4f4f5;
@@ -86,7 +90,6 @@
     from 180deg at 50% 50%,
     var(--tw-gradient-stops)
   );
-
   /* ------------------------------
      Shiki (Code Highlighting)
   ------------------------------ */
@@ -99,6 +102,300 @@
   --shiki-token-parameter: var(--color-pink-300);
   --shiki-token-function: var(--color-violet-300);
   --shiki-token-punctuation: var(--color-zinc-200);
+}
+
+.prose {
+  --tw-prose-body: theme(colors.zinc.700);
+  --tw-prose-headings: theme(colors.zinc.900);
+  --tw-prose-links: theme(colors.emerald.500);
+  --tw-prose-links-hover: theme(colors.emerald.600);
+  --tw-prose-links-underline: color-mix(
+    in srgb,
+    theme(colors.emerald.500) 30%,
+    transparent
+  );
+  --tw-prose-bold: theme(colors.zinc.900);
+  --tw-prose-counters: theme(colors.zinc.500);
+  --tw-prose-bullets: theme(colors.zinc.300);
+  --tw-prose-hr: color-mix(in srgb, theme(colors.zinc.900) 5%, transparent);
+  --tw-prose-quotes: theme(colors.zinc.900);
+  --tw-prose-quote-borders: theme(colors.zinc.200);
+  --tw-prose-captions: theme(colors.zinc.500);
+  --tw-prose-code: theme(colors.zinc.900);
+  --tw-prose-code-bg: theme(colors.zinc.100);
+  --tw-prose-code-ring: theme(colors.zinc.300);
+  --tw-prose-th-borders: theme(colors.zinc.300);
+  --tw-prose-td-borders: theme(colors.zinc.200);
+}
+
+@variant dark {
+  .prose {
+    --tw-prose-body: theme(colors.zinc.400);
+    --tw-prose-headings: theme(colors.white);
+    --tw-prose-links: theme(colors.emerald.400);
+    --tw-prose-links-hover: theme(colors.emerald.500);
+    --tw-prose-links-underline: color-mix(
+      in srgb,
+      theme(colors.emerald.500) 30%,
+      transparent
+    );
+    --tw-prose-bold: theme(colors.white);
+    --tw-prose-counters: theme(colors.zinc.400);
+    --tw-prose-bullets: theme(colors.zinc.600);
+    --tw-prose-hr: color-mix(in srgb, theme(colors.white) 5%, transparent);
+    --tw-prose-quotes: theme(colors.zinc.100);
+    --tw-prose-quote-borders: theme(colors.zinc.700);
+    --tw-prose-captions: theme(colors.zinc.400);
+    --tw-prose-code: theme(colors.white);
+    --tw-prose-code-bg: color-mix(
+      in srgb,
+      theme(colors.zinc.700) 15%,
+      transparent
+    );
+    --tw-prose-code-ring: color-mix(
+      in srgb,
+      theme(colors.white) 10%,
+      transparent
+    );
+    --tw-prose-th-borders: theme(colors.zinc.600);
+    --tw-prose-td-borders: theme(colors.zinc.700);
+  }
+}
+
+/* Define custom properties in @theme if needed */
+
+/* Then use .prose class OUTSIDE @theme */
+
+/* Layout */
+.prose > * {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+  .prose > * {
+    max-width: 48rem;
+    margin-left: calc(50% - min(50%, 32rem));
+    margin-right: calc(50% - min(50%, 32rem));
+  }
+}
+
+/* Text */
+.prose p {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Lists */
+.prose ol {
+  list-style-type: decimal;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.625rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.625rem;
+}
+
+.prose li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose :is(ol, ul) > li {
+  padding-left: 0.375rem;
+}
+
+.prose ol > li::marker {
+  font-weight: 400;
+  color: var(--tw-prose-counters);
+}
+
+.prose ul > li::marker {
+  color: var(--tw-prose-bullets);
+}
+
+/* Horizontal rules */
+.prose hr {
+  border-color: color-mix(in srgb, #18181b 5%, transparent);
+  border-top-width: 1px;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  max-width: none;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+/* Quotes */
+.prose blockquote {
+  font-weight: 500;
+  font-style: italic;
+  color: var(--tw-prose-quotes);
+  border-left-width: 0.25rem;
+  border-left-color: var(--tw-prose-quote-borders);
+  quotes: "\201C""\201D""\2018""\2019";
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.25rem;
+}
+
+.prose blockquote p:first-of-type::before {
+  content: open-quote;
+}
+
+.prose blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+/* Headings */
+.prose h1 {
+  color: var(--tw-prose-headings);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h2 {
+  color: var(--tw-prose-headings);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h3 {
+  color: var(--tw-prose-headings);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Media */
+.prose img,
+.prose video,
+.prose figure {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose figure > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose figcaption {
+  color: var(--tw-prose-captions);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  table-layout: auto;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.prose thead {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--tw-prose-th-borders);
+}
+
+.prose thead th {
+  color: var(--tw-prose-headings);
+  font-weight: 600;
+  vertical-align: bottom;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.prose tbody tr {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--tw-prose-td-borders);
+}
+
+.prose tbody tr:last-child {
+  border-bottom-width: 0;
+}
+
+.prose :is(tbody, tfoot) td {
+  padding: 0.5rem;
+}
+
+/* Inline elements */
+.prose a {
+  color: var(--tw-prose-links);
+  text-decoration: underline transparent;
+  font-weight: 500;
+  transition-property: color, text-decoration-color;
+  transition-duration: 150ms;
+}
+
+.prose a:hover {
+  color: var(--tw-prose-links-hover);
+  text-decoration-color: color-mix(in srgb, #10b981 30%, transparent);
+}
+
+.prose strong {
+  color: var(--tw-prose-bold);
+  font-weight: 600;
+}
+
+.prose code {
+  color: var(--tw-prose-code);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.375rem;
+  box-shadow: inset 0 0 0 1px var(--tw-prose-code-ring);
+  background-color: var(--tw-prose-code-bg);
+  font-size: 0.75rem;
+}
+
+/* Overrides */
+.prose :is(h1, h2, h3) + * {
+  margin-top: 0;
+}
+
+.prose > :first-child {
+  margin-top: 0 !important;
+}
+
+.prose > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .prose {
+    --tw-prose-body: #a1a1aa;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-links: #34d399;
+    --tw-prose-links-hover: #10b981;
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #a1a1aa;
+    --tw-prose-bullets: #52525b;
+    --tw-prose-quotes: #f4f4f5;
+    --tw-prose-quote-borders: #3f3f46;
+    --tw-prose-captions: #a1a1aa;
+    --tw-prose-code: #ffffff;
+    --tw-prose-code-bg: color-mix(in srgb, #3f3f46 15%, transparent);
+    --tw-prose-code-ring: color-mix(in srgb, #ffffff 10%, transparent);
+    --tw-prose-th-borders: #52525b;
+    --tw-prose-td-borders: #3f3f46;
+  }
 }
 
 /* -------------------------------------------------

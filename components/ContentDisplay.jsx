@@ -14,7 +14,7 @@ export const ContentDisplay = async ({ id }) => {
         <span>Published On: {contentToDisplay.date}</span> by{" "}
         <Link
           className="link-green"
-          href={`/author/${contentToDisplay.author}`}
+          href={`/authors/${contentToDisplay.author}`}
         >
           {contentToDisplay.author}
         </Link>{" "}
