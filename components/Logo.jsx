@@ -6,7 +6,7 @@ export const Logo = () => {
     <div className="lg:flex">
       <Link aria-label="Home" href="/">
         <Image
-          src="./logo.svg"
+          src="/logo.svg"
           alt="Protocol"
           className="h-6 w-auto"
           height={100}

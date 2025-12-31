@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Search = () => {
   return (
-    <div class="fixed inset-x-0 top-0 z-50 bg-white bg-white/[var(--bg-opacity-light)] px-4 backdrop-blur-sm transition dark:bg-[#17181C] dark:backdrop-blur sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80">
-      <div class="container flex h-14 items-center justify-between gap-12">
+    <div className="fixed inset-x-0 top-0 z-50 bg-white bg-white/[var(--bg-opacity-light)] px-4 backdrop-blur-sm transition dark:bg-[#17181C] dark:backdrop-blur sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80">
+      <div className="container flex h-14 items-center justify-between gap-12">
         {/* Desktop view */}
         <div className=" lg:block lg:max-w-md lg:flex-auto">
           <button
@@ -31,10 +31,10 @@ const Search = () => {
         </div>
 
         {/* Mobile View */}
-        <div class="flex items-center gap-5 lg:hidden">
+        <div className="flex items-center gap-5 lg:hidden">
           <button
             type="button"
-            class="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
+            className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
             aria-label="Toggle navigation"
           >
             <Image
@@ -42,7 +42,7 @@ const Search = () => {
               height={20}
               width={20}
               alt="Menu"
-              class="w-2.5 stroke-zinc-900 dark:stroke-white"
+              className="w-2.5 stroke-zinc-900 dark:stroke-white"
             />
           </button>
           <Link aria-label="Home" href="/">
@@ -51,18 +51,18 @@ const Search = () => {
               width={100}
               src="/logo.svg"
               alt="Protocol"
-              class="h-6"
+              className="h-6"
             />
           </Link>
         </div>
 
-        <div class="flex items-center gap-5">
-          <div class="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15"></div>
-          <div class="flex gap-4">
-            <div class="contents lg:hidden">
+        <div className="flex items-center gap-5">
+          <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15"></div>
+          <div className="flex gap-4">
+            <div className="contents lg:hidden">
               <button
                 type="button"
-                class="focus:[&amp;:not(:focus-visible)]:outline-none flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5 lg:hidden"
+                className="focus:[&amp;:not(:focus-visible)]:outline-none flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5 lg:hidden"
                 aria-label="Find something..."
               >
                 <Image
@@ -70,7 +70,7 @@ const Search = () => {
                   width={100}
                   src="/search.svg"
                   alt="Search"
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                 />
               </button>
             </div>

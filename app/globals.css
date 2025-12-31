@@ -1,12 +1,45 @@
+/* -------------------------------------------------
+   Tailwind CSS v4 Entry
+-------------------------------------------------- */
 @import "tailwindcss";
-/* @plugin "@tailwindcss/typography";
-@plugin "@tailwindcss/aspect-ratio"; */
 
-/* ------------------------------
-   THEME CONFIG (Tailwind v4)
---------------------------------*/
+/* Optional plugins (uncomment only if installed) */
+
+/* -------------------------------------------------
+   Theme Tokens (Tailwind v4)
+-------------------------------------------------- */
 @theme {
-  /* Fonts sizes */
+  /* ------------------------------
+     Colors
+  ------------------------------ */
+  --color-white: #ffffff;
+
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+
+  --color-sky-300: #7dd3fc;
+  --color-pink-300: #f9a8d4;
+  --color-violet-300: #c4b5fd;
+
+  --color-dark: #0b1120;
+  --color-lighter-dark: #0f172a;
+
+  /* ------------------------------
+     Typography
+  ------------------------------ */
   --text-2xs: 0.75rem;
   --text-xs: 0.8125rem;
   --text-sm: 0.875rem;
@@ -22,11 +55,41 @@
   --text-8xl: 6rem;
   --text-9xl: 8rem;
 
-  /* Colors */
-  --color-dark: #0b1120;
-  --color-lighter-dark: #0f172a;
-  /* Root */
+  /* ------------------------------
+     Shadows
+  ------------------------------ */
+  --shadow-glow: 0 0 4px rgb(0 0 0 / 0.1);
 
+  /* ------------------------------
+     Max Widths
+  ------------------------------ */
+  --max-width-lg: 33rem;
+  --max-width-2xl: 40rem;
+  --max-width-3xl: 50rem;
+  --max-width-5xl: 66rem;
+
+  /* ------------------------------
+     Opacity
+  ------------------------------ */
+  --opacity-1: 0.01;
+  --opacity-2-5: 0.025;
+  --opacity-7-5: 0.075;
+  --opacity-15: 0.15;
+  --bg-opacity-light: 0.5;
+  --bg-opacity-dark: 0.2;
+
+  /* ------------------------------
+     Background Images
+  ------------------------------ */
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+
+  /* ------------------------------
+     Shiki (Code Highlighting)
+  ------------------------------ */
   --shiki-color-text: var(--color-white);
   --shiki-token-constant: var(--color-emerald-300);
   --shiki-token-string: var(--color-emerald-300);
@@ -36,46 +99,48 @@
   --shiki-token-parameter: var(--color-pink-300);
   --shiki-token-function: var(--color-violet-300);
   --shiki-token-punctuation: var(--color-zinc-200);
-
-  /* Shadows */
-  --shadow-glow: 0 0 4px rgb(0 0 0 / 0.1);
-
-  /* Max widths */
-  --max-width-lg: 33rem;
-  --max-width-2xl: 40rem;
-  --max-width-3xl: 50rem;
-  --max-width-5xl: 66rem;
-
-  /* Opacity */
-  --opacity-1: 0.01;
-  --opacity-2-5: 0.025;
-  --opacity-7-5: 0.075;
-  --opacity-15: 0.15;
-  --bg-opacity-light: 0.5;
-  --bg-opacity-dark: 0.2;
-
-  /* Background images */
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
 }
 
+/* -------------------------------------------------
+   Component Layer
+-------------------------------------------------- */
 @layer components {
   .readMore {
-    @apply inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium text-emerald-500 transition hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500;
+    @apply inline-flex justify-center gap-0.5 overflow-hidden
+           text-sm font-medium text-emerald-500 transition
+           hover:text-emerald-600
+           dark:text-emerald-400
+           dark:hover:text-emerald-500;
   }
 
   .buttonDark {
-    @apply inline-flex justify-center gap-0.5 overflow-hidden rounded-full bg-zinc-900 px-3 py-1 text-sm font-medium text-white transition hover:bg-zinc-700 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-1 dark:ring-inset dark:ring-emerald-400/20 dark:hover:bg-emerald-400/10 dark:hover:text-emerald-300 dark:hover:ring-emerald-300;
+    @apply inline-flex justify-center gap-0.5 overflow-hidden rounded-full
+           bg-zinc-900 px-3 py-1 text-sm font-medium text-white
+           transition hover:bg-zinc-700
+           dark:bg-emerald-400/10
+           dark:text-emerald-400
+           dark:ring-1 dark:ring-inset dark:ring-emerald-400/20
+           dark:hover:bg-emerald-400/10
+           dark:hover:text-emerald-300
+           dark:hover:ring-emerald-300;
   }
 
   .buttonLight {
-    @apply inline-flex justify-center gap-0.5 overflow-hidden rounded-full px-3 py-1 text-sm font-medium text-zinc-700 ring-1 ring-inset ring-zinc-900/10 transition hover:bg-zinc-900/2.5 hover:text-zinc-900 dark:text-zinc-400 dark:ring-white/10 dark:hover:bg-white/5 dark:hover:text-white;
+    @apply inline-flex justify-center gap-0.5 overflow-hidden rounded-full
+           px-3 py-1 text-sm font-medium text-zinc-700
+           ring-1 ring-inset ring-zinc-900/10
+           transition hover:bg-zinc-900/2.5 hover:text-zinc-900
+           dark:text-zinc-400
+           dark:ring-white/10
+           dark:hover:bg-white/5
+           dark:hover:text-white;
   }
 
   .linkGreen {
-    @apply inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium text-emerald-500 transition hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500;
+    @apply inline-flex justify-center gap-0.5 overflow-hidden
+           text-sm font-medium text-emerald-500 transition
+           hover:text-emerald-600
+           dark:text-emerald-400
+           dark:hover:text-emerald-500;
   }
 }
