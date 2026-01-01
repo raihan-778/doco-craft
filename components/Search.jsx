@@ -2,7 +2,6 @@
 
 import { useDebounce } from "@/hooks/useDebounce";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SearchResult } from "./SearchResult";
@@ -34,9 +33,9 @@ const Search = ({ docs }) => {
   };
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 bg-white bg-white/[var(--bg-opacity-light)] px-4 backdrop-blur-sm transition dark:bg-[#17181C] dark:backdrop-blur sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80">
-      <div className="container flex h-14 items-center justify-between gap-12">
-        {/* Desktop view */}
+    <div className="container flex h-14 items-center justify-between gap-12">
+      {/* Desktop view */}
+      <>
         <div className=" lg:block lg:max-w-md lg:flex-auto">
           <button
             type="button"
@@ -69,9 +68,10 @@ const Search = ({ docs }) => {
             closeSearchResults={closeSearchResults}
           />
         )}
+      </>
 
-        {/* Mobile View */}
-        <div className="flex items-center gap-5 lg:hidden">
+      {/* Mobile View */}
+      {/* <div className="flex items-center gap-5 lg:hidden">
           <button
             type="button"
             className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
@@ -115,8 +115,7 @@ const Search = ({ docs }) => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 };
