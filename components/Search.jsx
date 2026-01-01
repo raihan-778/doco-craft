@@ -1,7 +1,38 @@
+"use client";
+
+import { useDebounce } from "@/hooks/useDebounce";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SearchResult } from "./SearchResult";
 
-const Search = () => {
+const Search = ({ docs }) => {
+  const [searchResult, setSearchResult] = useState([]);
+  const [term, setTerm] = useState("");
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setTerm(e.target.value);
+    doSearch(value);
+  };
+
+  const doSearch = useDebounce((term) => {
+    const found = docs.filter((doc) => {
+      return doc.title.toLowerCase().includes(term.toLowerCase());
+    });
+    console.log(found);
+    setSearchResult(found);
+  }, 500);
+
+  const closeSearchResults = (event) => {
+    event.preventDefault();
+    router.push(event.target.href);
+    setTerm("");
+  };
+
   return (
     <div className="fixed inset-x-0 top-0 z-50 bg-white bg-white/[var(--bg-opacity-light)] px-4 backdrop-blur-sm transition dark:bg-[#17181C] dark:backdrop-blur sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80">
       <div className="container flex h-14 items-center justify-between gap-12">
@@ -21,6 +52,8 @@ const Search = () => {
             <input
               type="text"
               placeholder="Search..."
+              value={term}
+              onChange={handleChange}
               className="flex-1 focus:border-none focus:outline-none"
             />
             <kbd className="ml-auto w-auto text-2xs text-zinc-400 dark:text-zinc-500">
@@ -29,6 +62,13 @@ const Search = () => {
             </kbd>
           </button>
         </div>
+        {term && term.trim().length > 0 && (
+          <SearchResult
+            results={searchResult}
+            term={term}
+            closeSearchResults={closeSearchResults}
+          />
+        )}
 
         {/* Mobile View */}
         <div className="flex items-center gap-5 lg:hidden">
